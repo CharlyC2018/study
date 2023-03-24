@@ -11,6 +11,7 @@ public class TestOperator4 {
 		System.out.println(!b2);
 		System.out.println(b1 ^ b2);
 
+		@SuppressWarnings("unused")
 		boolean b3 = 1 > 2 && (4 < 3 / 0);
 		System.out.println(b3);
 
