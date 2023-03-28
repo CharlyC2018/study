@@ -1,4 +1,4 @@
-package mathod;
+package method;
 
 public class TestMethod2 {
 
