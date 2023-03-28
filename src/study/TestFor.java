@@ -1,7 +1,5 @@
 package study;
 
-import java.util.Iterator;
-
 public class TestFor {
 
 	public static void main(String[] args) {
@@ -23,7 +21,7 @@ public class TestFor {
 		}
 		System.out.println("");
 
-		for (int i = 90; i > 1; i-=3) {
+		for (int i = 90; i > 1; i -= 3) {
 			if ((i % 3) == 0) {
 				System.out.print(i + ",");
 			}
