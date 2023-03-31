@@ -1,4 +1,4 @@
-package OOP;
+package oop;
 
 public class Car {
 	//对于一个类来说，有三种成员，属性field，方法method，构造器constructor
