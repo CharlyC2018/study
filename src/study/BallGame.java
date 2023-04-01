@@ -3,6 +3,7 @@ package study;
 import java.awt.*;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class BallGame extends JFrame {
 
 	Image ball = Toolkit.getDefaultToolkit().getImage("images/ball.png");
