@@ -28,6 +28,9 @@ public class User {
 		User u = new User();
 		User u1 = new User(15, "charly");
 		User u2 = new User(15, "charly", "123456");
+		System.out.println(u.id);
+		System.out.println(u1.id);
+		System.out.println(u2.id);
 	}
 
 }
