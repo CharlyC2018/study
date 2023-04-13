@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class GameObject {
 	Image img;// 对应的图片
-	double x, y;// 坐标
+	int x, y;// 坐标
 	int speed;// 物体移动速度
 	int width, height;// 物体的宽度和高度
 

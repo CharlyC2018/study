@@ -6,20 +6,40 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class MyGameFrame extends Frame {
 
-	Image plane1 = GameUtil.getImage1("images/airplaneWar/plane.png");
-	Image bg = GameUtil.getImage1("images/airplaneWar/bg.jpg");
+	Image plane1 = GameUtil.getImage("images/plane.png");
+	Image bg = GameUtil.getImage("images/bg.jpg");
 
 	static int count = 0;
 
-	Plane plane = new Plane(plane1, 200, 200, 5);
+	Plane plane = new Plane(plane1, 200, 200, 7);
+	Shell[] shells = new Shell[50];
 
 	@Override
 	public void paint(Graphics g) {
-		System.out.println("窗口绘制"+count);
+		// System.out.println("窗口绘制"+count);
 		count++;
 
 		g.drawImage(bg, 0, 0, Constant.GAME_WIDTH, Constant.GAME_HEIGHT, null);
 		plane.drawMyself(g);
+		
+		for (int i = 0; i < shells.length; i++) {
+			shells[i].drawMyself(g);
+		}
+		
+	}
+
+	// 键盘监听内部类
+	class KeyMonitor extends KeyAdapter {
+		@Override
+		public void keyPressed(KeyEvent e) {
+			plane.addDirection(e);
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			plane.minusDirection(e);
+		}
+
 	}
 
 	public void launchFrame() {
@@ -38,6 +58,12 @@ public class MyGameFrame extends Frame {
 
 		// 启动窗口，绘制线程
 		new PaintThread().start();
+
+		this.addKeyListener(new KeyMonitor());
+
+		for (int i = 0; i < shells.length; i++) {
+			shells[i] = new Shell();
+		}
 	}
 
 	// 内部类
@@ -48,7 +74,7 @@ public class MyGameFrame extends Frame {
 				repaint();
 
 				try {
-					Thread.sleep(50);
+					Thread.sleep(40);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
