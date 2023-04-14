@@ -9,23 +9,30 @@ public class MyGameFrame extends Frame {
 	Image plane1 = GameUtil.getImage("images/plane.png");
 	Image bg = GameUtil.getImage("images/bg.jpg");
 
-	static int count = 0;
-
 	Plane plane = new Plane(plane1, 200, 200, 7);
 	Shell[] shells = new Shell[50];
+	Explode explode;// 声明炮弹
 
 	@Override
 	public void paint(Graphics g) {
-		// System.out.println("窗口绘制"+count);
-		count++;
 
 		g.drawImage(bg, 0, 0, Constant.GAME_WIDTH, Constant.GAME_HEIGHT, null);
 		plane.drawMyself(g);
-		
+
 		for (int i = 0; i < shells.length; i++) {
-			shells[i].drawMyself(g);
+			if (shells[i] != null) {
+				shells[i].drawMyself(g);
+				boolean peng = shells[i].getRectangle().intersects(plane.getRectangle());
+
+				if (peng) {
+					plane.live = false;
+					if (explode == null) {
+						explode = new Explode(plane.x, plane.y);
+					}
+					explode.draw(g);
+				}
+			}
 		}
-		
 	}
 
 	// 键盘监听内部类

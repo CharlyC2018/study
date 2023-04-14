@@ -30,11 +30,11 @@ public class GameUtil {
 	
 	 public static void main(String[] args) {
 	        //Image img = GameUtil.getImage("/study/images/airplaneWar/plane.png");
-	      //  Image bg = GameUtil.getImage("images/ball.png");
+	       // Image bg = GameUtil.getImage("images/ball.png");
 	       // System.out.println(img);
 	       // System.out.println(bg);
 	        
-		 URL url = GameUtil.class.getResource("/images/plane.png");
-		 System.out.println(url);
+		// URL url = GameUtil.class.getResource("");
+		// System.out.println(url);
 	    }
 }

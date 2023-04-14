@@ -49,6 +49,11 @@ public class Plane extends GameObject {
 
 	@Override
 	public void drawMyself(Graphics g) {
+
+		if (!live) {
+			return;
+		}
+
 		super.drawMyself(g);
 		// x += speed;
 		if (left) {

@@ -7,8 +7,8 @@ public class Shell extends GameObject {
 
 	public Shell() {
 		degree = Math.random() * Math.PI * 2;
-		x = 200;
-		y = 200;
+		x = 100;
+		y = 100;
 		width = 10;
 		height = 10;
 		speed = 10;
@@ -26,11 +26,11 @@ public class Shell extends GameObject {
 		y += speed * Math.sin(degree);
 
 		// 实现边界碰撞回弹
-		if (y > Constant.GAME_HEIGHT || y <= 30) {
+		if (y > Constant.GAME_HEIGHT - width || y <= 30) {
 			degree = -degree;
 		}
 
-		if (x > Constant.GAME_WIDTH-width || x <= 0) {
+		if (x > Constant.GAME_WIDTH - width || x <= 0) {
 			degree = Math.PI - degree;
 		}
 
