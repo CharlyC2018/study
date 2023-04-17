@@ -2,6 +2,7 @@ package src;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 public class MyGameFrame extends Frame {
@@ -10,8 +11,12 @@ public class MyGameFrame extends Frame {
 	Image bg = GameUtil.getImage("images/bg.jpg");
 
 	Plane plane = new Plane(plane1, 200, 200, 7);
-	Shell[] shells = new Shell[50];
+	Shell[] shells = new Shell[25];
 	Explode explode;// 声明炮弹
+
+	Date startDate = new Date();
+	Date endDate;
+	int timeDate;
 
 	@Override
 	public void paint(Graphics g) {
@@ -26,6 +31,9 @@ public class MyGameFrame extends Frame {
 
 				if (peng) {
 					plane.live = false;
+					if (endDate ==null) {
+						endDate = new Date();
+					}
 					if (explode == null) {
 						explode = new Explode(plane.x, plane.y);
 					}
@@ -33,6 +41,23 @@ public class MyGameFrame extends Frame {
 				}
 			}
 		}
+		if (!plane.live) {
+			timeDate = (int) ((endDate.getTime() - startDate.getTime()) / 1000);
+			paintInfo(g, "游戏时间：" + timeDate + "秒", 20, Constant.GAME_WIDTH/2, Constant.GAME_HEIGHT/2, Color.white);
+		}
+	}
+
+	public void paintInfo(Graphics g, String str, int size, int x, int y, Color color) {
+		Font oldFont = g.getFont();
+		Color oldColor = g.getColor();
+
+		Font f = new Font("宋体", Font.BOLD, size);
+		g.setFont(f);
+		g.setColor(color);
+		g.drawString(str, x, y);
+
+		g.setFont(oldFont);
+		g.setColor(oldColor);
 	}
 
 	// 键盘监听内部类
@@ -54,7 +79,7 @@ public class MyGameFrame extends Frame {
 
 		setVisible(true);
 		setSize(Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
-		setLocation(200, 100);
+		setLocation(700, 300);
 
 		this.addWindowListener(new WindowAdapter() {
 			@Override

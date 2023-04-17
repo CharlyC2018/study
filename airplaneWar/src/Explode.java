@@ -9,7 +9,7 @@ public class Explode {
 
 	static {
 		for (int i = 0; i < 16; i++) {
-			imgs[i] = GameUtil.getImage("images/explode/e" + (i + 1) + ".gif");
+			imgs[i] = GameUtil.getImage("explode/e" + (i + 1) + ".gif");
 			// ·ÀÀÁ¼ÓÔØ
 			imgs[i].getWidth(null);
 		}
