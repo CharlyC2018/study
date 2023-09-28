@@ -3,9 +3,9 @@ package sqlCon;
 import java.sql.*;
 
 public class SqlConnection {
-	private static final String URL="jdbc:mysql://localhost:3306/charly?&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-	private static final String NAME="root";
-	private static final String PASSWORD="123456";
+	private static final String URL="jdbc:mysql://124.220.48.14:3306/demo?&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+	private static final String NAME="charly";
+	private static final String PASSWORD="1234";
 	
 	public Connection conn = null;
 	
